@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "name": "katas-with-tdd",
+  "version": "1.0.0",
+  "description": "Katas hechas con Test Driven Development (TDD)",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
