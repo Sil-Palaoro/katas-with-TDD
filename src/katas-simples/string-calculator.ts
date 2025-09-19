@@ -22,7 +22,8 @@ export const add: Add = (numbers:string): number => {
 
 
 // Sugerencias de requerimientos adicionales
-// Agregá soporte para números negativos.
+// Agregá soporte para números negativos.: Ya lo cumple
+
 // Agregá soporte para números decimales.
 // Agregá soporte para diferentes delimitadores.
 // Agregá soporte para números en notación científica.

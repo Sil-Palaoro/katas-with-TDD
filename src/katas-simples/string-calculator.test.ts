@@ -13,6 +13,9 @@ describe("String calculator", () => {
     test("given a string with the numbers 'a, b, c,...x', should return the sum of those numbers", () => {
         const result = add("3, 7, 2, 58, 4, 9, 134, 26");
         expect(result).toBe(243);
-    }
-    )
+    })
+    test("given a string with positive and negative numbers 'a, b, c,...x', should return the sum of those numbers", () => {
+        const result = add("-3, -7, -2, 6, 9, -22, 3");
+        expect(result).toBe(-16);
+    })
 })
