@@ -1,0 +1,18 @@
+import {describe, test, expect} from 'vitest';
+import {add} from './string-calculator';
+
+describe("String calculator", () => {
+    test("given a string with the numbers '1, 2 and 3', should return 6", () => {
+        const result = add("1, 2, 3");
+        expect(result).toBe(6);
+    })
+    test("given a string with the numbers '2, 4 y 6', should return 12", () => {
+        const result = add("2, 4, 6");
+        expect(result).toBe(12);
+    })
+    test("given a string with the numbers 'a, b, c,...x', should return the sum of those numbers", () => {
+        const result = add("3, 7, 2, 58, 4, 9, 134, 26");
+        expect(result).toBe(243);
+    }
+    )
+})
