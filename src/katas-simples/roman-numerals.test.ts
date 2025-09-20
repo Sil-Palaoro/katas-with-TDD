@@ -41,18 +41,23 @@ describe("Roman Numerals", () => {
     })
 
     test("given the number '2', should return 'II'", () =>{       
-        // const result = toRoman(2);
-        // expect(result).toBe("II"); 
+        const result = toRoman(2);
+        expect(result).toBe("II"); 
     })
 
-    test("given the number '4', should return 'IV'", () =>{       
-        // const result = toRoman(4);
-        // expect(result).toBe("IV"); 
+    test("given the number '3', should return 'III'", () =>{       
+        const result = toRoman(3);
+        expect(result).toBe("III"); 
     })
 
+    // test("given the number '4', should return 'IV'", () =>{       
+    //     const result = toRoman(4);
+    //     expect(result).toBe("IV"); 
+    // })
 
-    test("given the number '1994', should return 'MCMXCIV'", () =>{       
-        // const result = toRoman(1994);
-        // expect(result).toBe("MCMXCIV"); 
-    })
+
+    // test("given the number '1994', should return 'MCMXCIV'", () =>{       
+    //     // const result = toRoman(1994);
+    //     // expect(result).toBe("MCMXCIV"); 
+    // })
 })

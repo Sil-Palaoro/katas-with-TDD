@@ -18,8 +18,14 @@ export const toRoman: ToRoman = (number: number): string => {
     const quinientos = "D";
     const mil = "M";
 
-    if (number == 1) {        
-        return unidad;
+    if (number < 4) {
+        let result = "";
+        let i=0
+        while (i < number) {
+            i++
+            result += unidad
+        }
+        return result;
     }
     if (number == 5) {
         return cinco;
