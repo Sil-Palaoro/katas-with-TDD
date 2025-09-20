@@ -21,4 +21,15 @@ describe("String calculator", () => {
         const result = add("0.2554, 0.457, 0.6556");
         expect(result).toBe(1.38);
     })
+
+    // test("given a string with the numbers 'a, b, c,...x', separated by '-' should return the sum of those numbers", () => {
+    //     const result = add("3 - 7 - 2");
+    //     expect(result).toBe(12);
+    // })
+
+    test("given a string with the numbers 'a, b, c,...x', separated by '/' should return the sum of those numbers", () => {
+        const result = add("3 / -7 / 2");
+        expect(result).toBe(-2);
+    })
+    
 })

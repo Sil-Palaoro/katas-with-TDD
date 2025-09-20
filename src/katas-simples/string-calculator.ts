@@ -9,7 +9,7 @@
 type Add = (numbers: string) => number
 
 export const add: Add = (numbers:string): number => {
-      const stringArray: string[] = numbers.split(",")
+      const stringArray: string[] = numbers.split(/,|[/]/)
       const numberArray: number[] = stringArray.map((value) => parseFloat(value))
 
       let totalSum = 0
@@ -24,10 +24,14 @@ export const add: Add = (numbers:string): number => {
 }
 
 
-// Sugerencias de requerimientos adicionales
+// Sugerencias de requerimientos adicionales:
 // Agregá soporte para números negativos.: Ya lo cumple
 
-// Agregá soporte para números decimales: Ya lo cumple, con redondeo de 2 cifras
+// Agregá soporte para números decimales: Ya lo cumple, con redondeo de 2 cifras.
+//Primero pasa cada número del array de números a que tenga 2 cifras con toFixed(2), y luego se lo vuelve a pasar a float para poder sumarlos.
 
-// Agregá soporte para diferentes delimitadores.
+// Agregá soporte para diferentes delimitadores (estos pueden ser: "-", "/").: Pude agregar soporte para el delimitador "/". No pude agregar 
+// soporte para el delimitador "-", porque al usarlo como separador, los números negativos se dividen en dos partes (el signo "-" y el número), y eso genera NaN al querer parsearlo a float.
+
+
 // Agregá soporte para números en notación científica.
