@@ -17,9 +17,9 @@ export const toRoman: ToRoman = (number: number): string => {
     const centena = "C";
     const quinientos = "D";
     const mil = "M";
+    let result = "";
 
-    if (number < 4) {
-        let result = "";
+    if (number < 4) {        
         let i=0
         while (i < number) {
             i++
@@ -27,8 +27,23 @@ export const toRoman: ToRoman = (number: number): string => {
         }
         return result;
     }
+    if (number == 4) {
+        result = unidad + cinco
+        return result
+    }
     if (number == 5) {
         return cinco;
+    }
+    if (number > 5 && number < 9) {        
+        let i=6;
+        let unidades = "";
+        while (i<= number) {           
+            unidades += unidad;               
+            i++;            
+        }
+        result = cinco + unidades;
+
+        return result;
     }
     if (number == 10) {
         return decena;
@@ -42,7 +57,10 @@ export const toRoman: ToRoman = (number: number): string => {
     if (number == 500) {
         return quinientos;
     }
-    return mil;
+    if (number == 1000) {
+        return mil;
+    }
+    return result;
 };
 
 

@@ -50,10 +50,25 @@ describe("Roman Numerals", () => {
         expect(result).toBe("III"); 
     })
 
-    // test("given the number '4', should return 'IV'", () =>{       
-    //     const result = toRoman(4);
-    //     expect(result).toBe("IV"); 
-    // })
+    test("given the number '4', should return 'IV'", () =>{       
+        const result = toRoman(4);
+        expect(result).toBe("IV"); 
+    })
+
+    test("given the number '6', should return 'VI'", () =>{       
+        const result = toRoman(6);
+        expect(result).toBe("VI"); 
+    })
+
+   test("given the number '7', should return 'VII'", () =>{       
+        const result = toRoman(7);
+        expect(result).toBe("VII"); 
+    })
+
+       test("given the number '8', should return 'VIII'", () =>{       
+        const result = toRoman(8);
+        expect(result).toBe("VIII"); 
+    })
 
 
     // test("given the number '1994', should return 'MCMXCIV'", () =>{       
