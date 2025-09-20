@@ -45,6 +45,10 @@ export const toRoman: ToRoman = (number: number): string => {
 
         return result;
     }
+    if (number == 9) {
+        result = unidad + decena
+        return result
+    }
     if (number == 10) {
         return decena;
     }

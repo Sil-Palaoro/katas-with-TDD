@@ -65,11 +65,15 @@ describe("Roman Numerals", () => {
         expect(result).toBe("VII"); 
     })
 
-       test("given the number '8', should return 'VIII'", () =>{       
+    test("given the number '8', should return 'VIII'", () =>{       
         const result = toRoman(8);
         expect(result).toBe("VIII"); 
     })
 
+    test("given the number '9', should return 'IX'", () =>{       
+        const result = toRoman(9);
+        expect(result).toBe("IX"); 
+    })
 
     // test("given the number '1994', should return 'MCMXCIV'", () =>{       
     //     // const result = toRoman(1994);
