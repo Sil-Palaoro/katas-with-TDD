@@ -2,7 +2,7 @@
 // Un ejemplo de uso sería:
 
 // const result = toRoman(1994)
-//       ^ "MCMXCIV"
+//       ^ "M CM XC IV"
 
 //Las equivalencias en números romanos son: I = 1, V = 5, X = 10, L = 50, C = 100, D = 500 y M = 1000
 
@@ -17,7 +17,7 @@ interface Units {
 interface Tens {
     numberOfDigits: 2;
     number: number;
-
+    numberArray: string[];
 }
 
 interface Hundreds {
@@ -89,8 +89,52 @@ const unitNumber = (number: number): string =>{
     return "";
 }
 
-const tensNumber = (number: number): string =>{
-    return "";
+const tensNumber = (numberArray: string[]): string =>{
+    const ones = unitNumber(Number(numberArray[1]));
+    let tensDigit = Number(numberArray[0])
+
+    const tensFunction = (tensDigit: number) => {
+        let result = "";
+
+        if (tensDigit < 4) {        
+        let i=0
+        while (i < tensDigit) {
+            i++
+            result += ten
+        }
+        return result;
+        }
+        if (tensDigit == 4) {
+            result = ten + fifty
+            return result
+        }
+        if (tensDigit == 5) {
+            return fifty;
+        }
+        if (tensDigit > 5 && tensDigit < 9) {        
+            let i=6;
+            let units = "";
+            while (i<= tensDigit) {           
+                units += ten;               
+                i++;            
+            }
+            result = fifty + units;
+
+            return result;
+        }
+        if (tensDigit == 9) {
+            result = ten + oneHundred
+            return result
+        }
+        return "";
+    }
+    
+    const tens = tensFunction(tensDigit);
+
+    const total = tens + ones;
+
+
+    return total;
 }
 
 const hundredNumber = (number: number): string =>{
@@ -111,6 +155,7 @@ export const toRoman: ToRoman = (number: number): string => {
     const numberObject: DecimalNumber = {
         numberOfDigits: numberOfDigits as DecimalNumber["numberOfDigits"],
         number: number,
+        numberArray: numberArray,
     }
 
     console.log(numberOfDigits);
@@ -119,7 +164,7 @@ export const toRoman: ToRoman = (number: number): string => {
         case 1:
             return unitNumber(numberObject.number);
         case 2:
-            return tensNumber(numberObject.number);
+            return tensNumber(numberObject.numberArray);
         case 3:
             return hundredNumber(numberObject.number);
         case 4:

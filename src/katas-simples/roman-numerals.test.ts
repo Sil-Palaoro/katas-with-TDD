@@ -11,37 +11,7 @@ describe("Roman Numerals", () => {
         expect(result).toBe("I"); 
     })
 
-    test("given the number '5', should return 'V'", () =>{       
-        const result = toRoman(5);
-        expect(result).toBe("V"); 
-    })
-
-//     test("given the number '10', should return 'X'", () =>{       
-//         const result = toRoman(10);
-//         expect(result).toBe("X"); 
-//     })
-
-//     test("given the number '50', should return 'L'", () =>{       
-//         const result = toRoman(50);
-//         expect(result).toBe("L"); 
-//     })
-
-//     test("given the number '100', should return 'C'", () =>{       
-//         const result = toRoman(100);
-//         expect(result).toBe("C"); 
-//     })
-
-//     test("given the number '500', should return 'D'", () =>{       
-//         const result = toRoman(500);
-//         expect(result).toBe("D"); 
-//     })
-
-//     test("given the number '1000', should return 'M'", () =>{       
-//         const result = toRoman(1000);
-//         expect(result).toBe("M"); 
-//     })
-
-    test("given the number '2', should return 'II'", () =>{       
+        test("given the number '2', should return 'II'", () =>{       
         const result = toRoman(2);
         expect(result).toBe("II"); 
     })
@@ -56,7 +26,12 @@ describe("Roman Numerals", () => {
         expect(result).toBe("IV"); 
     })
 
-    test("given the number '6', should return 'VI'", () =>{       
+    test("given the number '5', should return 'V'", () =>{       
+        const result = toRoman(5);
+        expect(result).toBe("V"); 
+    })
+
+        test("given the number '6', should return 'VI'", () =>{       
         const result = toRoman(6);
         expect(result).toBe("VI"); 
     })
@@ -75,6 +50,64 @@ describe("Roman Numerals", () => {
         const result = toRoman(9);
         expect(result).toBe("IX"); 
     })
+
+    test("given the number '10', should return 'X'", () =>{       
+        const result = toRoman(10);
+        expect(result).toBe("X"); 
+    })
+
+    test("given the number '12', should return 'XII'", () =>{       
+        const result = toRoman(12);
+        expect(result).toBe("XII"); 
+    })
+
+    test("given the number '29', should return 'XXIX'", () =>{       
+        const result = toRoman(29);
+        expect(result).toBe("XXIX"); 
+    })
+
+    test("given the number '50', should return 'L'", () =>{       
+        const result = toRoman(50);
+        expect(result).toBe("L"); 
+    })
+
+    test("given the number '55', should return 'DV'", () =>{       
+        const result = toRoman(55);
+        expect(result).toBe("LV"); 
+    })
+
+    test("given the number '74', should return 'LXXIV'", () =>{       
+        const result = toRoman(74);
+        expect(result).toBe("LXXIV"); 
+    })
+
+    test("given the number '90', should return 'XC'", () =>{       
+        const result = toRoman(90);
+        expect(result).toBe("XC"); 
+    })
+
+    test("given the number '99', should return 'XCIX'", () =>{       
+        const result = toRoman(99);
+        expect(result).toBe("XCIX"); 
+    })
+
+
+//     test("given the number '100', should return 'C'", () =>{       
+//         const result = toRoman(100);
+//         expect(result).toBe("C"); 
+//     })
+
+//     test("given the number '500', should return 'D'", () =>{       
+//         const result = toRoman(500);
+//         expect(result).toBe("D"); 
+//     })
+
+//     test("given the number '1000', should return 'M'", () =>{       
+//         const result = toRoman(1000);
+//         expect(result).toBe("M"); 
+//     })
+
+
 
     test("given one number, the console should log the number of digits of that number", () =>{       
         const consoleSpy = vi.spyOn(console, 'log')
