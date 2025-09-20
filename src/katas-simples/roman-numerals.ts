@@ -9,73 +9,67 @@
 
 type ToRoman = (number: number) => string
 
+
+
 export const toRoman: ToRoman = (number: number): string => {
-    const unidad = "I";
-    const cinco = "V";
-    const decena = "X";
-    const cincuenta = "L";
-    const centena = "C";
-    const quinientos = "D";
-    const mil = "M";
+    const one = "I";
+    const five = "V";
+    const ten = "X";
+    const fifty = "L";
+    const oneHundred = "C";
+    const fiveHundred = "D";
+    const oneThousand = "M";
     let result = "";
 
     if (number < 4) {        
         let i=0
         while (i < number) {
             i++
-            result += unidad
+            result += one
         }
         return result;
     }
     if (number == 4) {
-        result = unidad + cinco
+        result = one + five
         return result
     }
     if (number == 5) {
-        return cinco;
+        return five;
     }
     if (number > 5 && number < 9) {        
         let i=6;
-        let unidades = "";
+        let units = "";
         while (i<= number) {           
-            unidades += unidad;               
+            units += one;               
             i++;            
         }
-        result = cinco + unidades;
+        result = five + units;
 
         return result;
     }
     if (number == 9) {
-        result = unidad + decena
+        result = one + ten
         return result
     }
     if (number == 10) {
-        return decena;
+        return ten;
     }
     if (number == 50) {
-        return cincuenta;
+        return fifty;
     }
     if (number == 100) {
-        return centena;
+        return oneHundred;
     }
     if (number == 500) {
-        return quinientos;
+        return fiveHundred;
     }
     if (number == 1000) {
-        return mil;
+        return oneThousand;
     }
     return result;
 };
 
 
-
-// if (number < 4) {
-//         let result = "";
-//         for(let i=0; i=number; i++){
-//             result += unidad
-//         }
-//         return result;
-//     }
 
 
 
