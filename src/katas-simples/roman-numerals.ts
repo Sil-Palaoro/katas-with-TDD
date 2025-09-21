@@ -7,11 +7,15 @@
 //Las equivalencias en números romanos son: I = 1, V = 5, X = 10, L = 50, C = 100, D = 500 y M = 1000
 
 
+// Nota: Esta implementación cubre números del 1 al 3999. Los números romanos tradicionalmente no tienen una representación estándar para números mayores a 3999.
+
+
 type ToRoman = (number: number) => string
 
 interface Units {
     numberOfDigits: 1;
     number: number;
+    numberArray: string[];
 }
 
 interface Tens {
@@ -23,11 +27,13 @@ interface Tens {
 interface Hundreds {
     numberOfDigits: 3;
     number: number;
+    numberArray: string[];
 }
 
 interface Thousands {
     numberOfDigits: 4;
     number: number;
+    numberArray: string[];
 }
 
 type DecimalNumber = Units | Tens | Hundreds | Thousands;
@@ -53,28 +59,28 @@ const fiveHundred: RomanEquivalentType = RomanEquivalent.fiveHundred;
 const oneThousand: RomanEquivalentType = RomanEquivalent.oneThousand;
 
 
-const unitNumber = (number: number): string =>{
+const unitFunction = (unitDigit: number): string => {
     let result = "";
 
-    if (number < 4) {        
+    if (unitDigit < 4) {        
         let i=0
-        while (i < number) {
+        while (i < unitDigit) {
             i++
             result += one
         }
         return result;
     }
-    if (number == 4) {
+    if (unitDigit == 4) {
         result = one + five
         return result
     }
-    if (number == 5) {
+    if (unitDigit == 5) {
         return five;
     }
-    if (number > 5 && number < 9) {        
+    if (unitDigit > 5 && unitDigit < 9) {        
         let i=6;
         let units = "";
-        while (i<= number) {           
+        while (i<= unitDigit) {           
             units += one;               
             i++;            
         }
@@ -82,39 +88,35 @@ const unitNumber = (number: number): string =>{
 
         return result;
     }
-    if (number == 9) {
+    if (unitDigit == 9) {
         result = one + ten
         return result
     }
     return "";
-}
+};
 
-const tensNumber = (numberArray: string[]): string =>{
-    const ones = unitNumber(Number(numberArray[1]));
-    let tensDigit = Number(numberArray[0])
-
-    const tensFunction = (tensDigit: number) => {
+const tenthsFunction = (tenthsDigit: number) => {
         let result = "";
 
-        if (tensDigit < 4) {        
+        if (tenthsDigit < 4) {        
         let i=0
-        while (i < tensDigit) {
+        while (i < tenthsDigit) {
             i++
             result += ten
         }
         return result;
         }
-        if (tensDigit == 4) {
+        if (tenthsDigit == 4) {
             result = ten + fifty
             return result
         }
-        if (tensDigit == 5) {
+        if (tenthsDigit == 5) {
             return fifty;
         }
-        if (tensDigit > 5 && tensDigit < 9) {        
+        if (tenthsDigit > 5 && tenthsDigit < 9) {        
             let i=6;
             let units = "";
-            while (i<= tensDigit) {           
+            while (i<= tenthsDigit) {           
                 units += ten;               
                 i++;            
             }
@@ -122,27 +124,96 @@ const tensNumber = (numberArray: string[]): string =>{
 
             return result;
         }
-        if (tensDigit == 9) {
+        if (tenthsDigit == 9) {
             result = ten + oneHundred
             return result
         }
         return "";
-    }
-    
-    const tens = tensFunction(tensDigit);
+};
+
+
+const hundredthFunction = (hundredthDigit: number) => {
+        let result = "";
+
+        if (hundredthDigit < 4) {        
+        let i=0
+        while (i < hundredthDigit) {
+            i++
+            result += oneHundred
+        }
+        return result;
+        }
+        if (hundredthDigit == 4) {
+            result = oneHundred + fiveHundred
+            return result
+        }
+        if (hundredthDigit == 5) {
+            return fiveHundred;
+        }
+        if (hundredthDigit > 5 && hundredthDigit < 9) {        
+            let i=6;
+            let units = "";
+            while (i<= hundredthDigit) {           
+                units += oneHundred;               
+                i++;            
+            }
+            result = fiveHundred + units;
+
+            return result;
+        }
+        if (hundredthDigit == 9) {
+            result = oneHundred + oneThousand
+            return result
+        }
+        return "";
+};
+
+
+const thousandthFunction = (thousandthDigit: number) => {
+        let result = "";
+
+        if (thousandthDigit < 4) {        
+        let i=0
+        while (i < thousandthDigit) {
+            i++
+            result += oneThousand
+        }
+        return result;
+        }
+        
+        return "";
+};
+
+const unitsNumber = (numberArray: string[]): string =>{
+    const ones = unitFunction(Number(numberArray[0]));
+    return ones;
+}
+
+const tensNumber = (numberArray: string[]): string =>{
+    const ones = unitFunction(Number(numberArray[1]));
+    const tens = tenthsFunction(Number(numberArray[0]));
 
     const total = tens + ones;
-
-
     return total;
 }
 
-const hundredNumber = (number: number): string =>{
-    return "";
+const hundredNumber = (numberArray: string[]): string =>{
+    const ones = unitFunction(Number(numberArray[2]));
+    const tens = tenthsFunction(Number(numberArray[1]));
+    const hundreds = hundredthFunction(Number(numberArray[0]))
+
+    const total = hundreds + tens + ones;    
+    return total;
 }
 
-const thousandNumber = (number: number): string =>{
-    return "";
+const thousandNumber = (numberArray: string[]): string =>{
+    const ones = unitFunction(Number(numberArray[3]));
+    const tens = tenthsFunction(Number(numberArray[2]));
+    const hundreds = hundredthFunction(Number(numberArray[1]));
+    const thousands = thousandthFunction(Number(numberArray[0]));
+
+    const total = thousands + hundreds + tens + ones;    
+    return total;
 }
 
 
@@ -162,72 +233,21 @@ export const toRoman: ToRoman = (number: number): string => {
 
     switch (numberObject.numberOfDigits) {
         case 1:
-            return unitNumber(numberObject.number);
+            return unitsNumber(numberObject.numberArray);
         case 2:
             return tensNumber(numberObject.numberArray);
         case 3:
-            return hundredNumber(numberObject.number);
+            return hundredNumber(numberObject.numberArray);
         case 4:
-            return thousandNumber(numberObject.number);
+            return thousandNumber(numberObject.numberArray);
         default:
             const exhaustiveCheck: never = numberObject;
             return exhaustiveCheck;
-
-    }
-
-    // if (number.number < 4) {        
-    //     let i=0
-    //     while (i < number.number) {
-    //         i++
-    //         result += one
-    //     }
-    //     return result;
-    // }
-    // if (number == 4) {
-    //     result = one + five
-    //     return result
-    // }
-    // if (number == 5) {
-    //     return five;
-    // }
-    // if (number > 5 && number < 9) {        
-    //     let i=6;
-    //     let units = "";
-    //     while (i<= number) {           
-    //         units += one;               
-    //         i++;            
-    //     }
-    //     result = five + units;
-
-    //     return result;
-    // }
-    // if (number == 9) {
-    //     result = one + ten
-    //     return result
-    // }
-    // if (number == 10) {
-    //     return ten;
-    // }
-    // if (number == 50) {
-    //     return fifty;
-    // }
-    // if (number == 100) {
-    //     return oneHundred;
-    // }
-    // if (number == 500) {
-    //     return fiveHundred;
-    // }
-    // if (number == 1000) {
-    //     return oneThousand;
-    // }
-    // return result;
+    };
 };
-
-
-
-
 
 
 
 // Sugerencias de requerimientos adicionales
 // ¿Qué sucede con números negativos, 0 y decimales?
+

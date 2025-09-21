@@ -92,22 +92,25 @@ describe("Roman Numerals", () => {
     })
 
 
-//     test("given the number '100', should return 'C'", () =>{       
-//         const result = toRoman(100);
-//         expect(result).toBe("C"); 
-//     })
+    test("given the number '100', should return 'C'", () =>{       
+        const result = toRoman(100);
+        expect(result).toBe("C"); 
+    })
 
-//     test("given the number '500', should return 'D'", () =>{       
-//         const result = toRoman(500);
-//         expect(result).toBe("D"); 
-//     })
+    test("given the number '500', should return 'D'", () =>{       
+        const result = toRoman(500);
+        expect(result).toBe("D"); 
+    })
 
-//     test("given the number '1000', should return 'M'", () =>{       
-//         const result = toRoman(1000);
-//         expect(result).toBe("M"); 
-//     })
+    test("given the number '1000', should return 'M'", () =>{       
+        const result = toRoman(1000);
+        expect(result).toBe("M"); 
+    })
 
-
+    test("given the number '3000', should return 'MMM'", () =>{       
+        const result = toRoman(3000);
+        expect(result).toBe("MMM"); 
+    })
 
     test("given one number, the console should log the number of digits of that number", () =>{       
         const consoleSpy = vi.spyOn(console, 'log')
@@ -115,8 +118,8 @@ describe("Roman Numerals", () => {
         expect(consoleSpy).toHaveBeenCalledWith(3); 
     })
 
-    // test("given the number '1994', should return 'MCMXCIV'", () =>{       
-    //     // const result = toRoman(1994);
-    //     // expect(result).toBe("MCMXCIV"); 
-    // })
+    test("given the number '1994', should return 'MCMXCIV'", () =>{       
+        const result = toRoman(1994);
+        expect(result).toBe("MCMXCIV"); 
+    })
 })
